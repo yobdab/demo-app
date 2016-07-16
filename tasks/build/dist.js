@@ -9,9 +9,7 @@ module.exports = (gulp, plugins, config) => {
     return beginBuild()
       .then(buildSFX)
       .then(cssPathFix)
-
       .then(copyDemoApp)
-
       .then(copyIndex)
       .then(() => console.log('Build complete'))
       .catch((err) => console.log('Build Failed', err));
