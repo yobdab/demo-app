@@ -11,11 +11,11 @@ export {transient, inject, Container, Local, Parent, Resolver}
 @resolver()
 class Local implements Resolver {
 
-  constructor(private key:any) {
-  }
-
   public static of(key:any):Local {
     return new Local(key);
+  }
+
+  constructor(private key:any) {
   }
 
   public get(container:Container):any {
@@ -29,11 +29,11 @@ class Local implements Resolver {
 @resolver()
 class Parent implements Resolver {
 
-  constructor(private key:any) {
-  }
-
   public static of(key:any):Parent {
     return new Parent(key);
+  }
+
+  constructor(private key:any) {
   }
 
   public get(container:any):any {

@@ -6,7 +6,7 @@ export class LogAnalyzer {
   public getTopHosts(log:Array<VarnishLog>, hostsNumber:number):Array<AccesedHost> {
     let hostsCount:Array<AccesedHost> = [];
     for (let line of log) {
-      let found = hostsCount.some((el:AccesedHost) => {
+      let found:boolean = hostsCount.some((el:AccesedHost) => {
         return el.host === line.host;
       });
       if (!found) {
@@ -22,7 +22,7 @@ export class LogAnalyzer {
   public getTopFiles(log:Array<VarnishLog>, filesNumber:number):Array<AccessedFile> {
     let filesCount:Array<AccessedFile> = [];
     for (let line of log) {
-      let found = filesCount.some((el:AccessedFile) => {
+      let found:boolean = filesCount.some((el:AccessedFile) => {
         return el.file === line.file;
       });
       if (!found) {

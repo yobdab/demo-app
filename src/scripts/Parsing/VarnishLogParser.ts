@@ -7,7 +7,7 @@ export class VarnishLogParser {
   private fileMatch:RegExp = /\"[A-Z]*\s([^\"^\s]*?)\s/;
 
   public parseLog(log:string):Array<VarnishLog> {
-    let parsedLog:Array<VarnishLog> =[];
+    let parsedLog:Array<VarnishLog> = [];
     if (log.length > 0) {
       parsedLog = log.trim()
         .split('\n')

@@ -8,7 +8,7 @@ export class Tabs {
 
   };
 
-  public initialize(daAnchor:HTMLElement) {
+  public initialize(daAnchor:HTMLElement):void {
     const tabsElements:NodeListOf<Element> = daAnchor.getElementsByClassName('tab-label');
     const contentElements:NodeListOf<Element> = daAnchor.getElementsByClassName(this.CONTENT_TAB_CSS_CLASS);
 
@@ -20,7 +20,7 @@ export class Tabs {
     this.tabsLabels.forEach((tab) => {
       tab.onclick = () => {
         this.activateTab(tab);
-      }
+      };
     });
   }
 
@@ -47,13 +47,13 @@ export class Tabs {
   private deactivateTabs():void {
     this.tabsLabels.forEach((element) => {
       element.classList.remove('active');
-    })
+    });
   }
 
   private deactivateTabsContent():void {
     this.tabsContent.forEach((element) => {
       element.classList.remove('active');
-    })
+    });
   }
 
   private activateFirstElement():void {

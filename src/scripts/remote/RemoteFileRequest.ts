@@ -16,7 +16,7 @@ export class RemoteFileRequest {
       }
     };
 
-    this.request.open("GET", path, true);
+    this.request.open('GET', path, true);
     this.request.send();
 
     return defferedRequest.promise;
