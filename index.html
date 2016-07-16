@@ -16,13 +16,11 @@
     demoApp.initialize(
       document.getElementById('demo-app-container'),
       {
-        logFileUrl: 'http://www.vg.no/rss/feed/forsiden/?frontId=1',
+        logFileUrl: '/src/logs/varnish.log',
         rssUrl: 'http://www.vg.no/rss/feed/forsiden/?frontId=1',
         feedUrl: ''
       }
-    ).catch(function (message) {
-      console.error(message);
-    });
+    );
   });
 </script>
 

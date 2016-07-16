@@ -2,6 +2,7 @@
 import './../styles/reset.css!';
 import './../styles/main.css!';
 import {inject} from './imports/DependencyInjection';
+import {Promise} from './imports/Promises';
 import {RemoteFileRequest} from './remote/RemoteFileRequest';
 import {InitConfig} from './initialization/InitConfig';
 import {VarnishLogParser} from './Parsing/VarnishLogParser';
@@ -19,7 +20,7 @@ export class Main {
 
   }
 
-  public initialize(daAnchor:HTMLElement, config:InitConfig):void {
+  public initialize(daAnchor:HTMLElement, config:InitConfig):void{
     this.remoteFileRequest.getFileContent(config.logFileUrl).then((fileContent) => {
       const parsedLog:Array<VarnishLog> = this.logFileParser.parseLog(fileContent);
       const topHosts:Array<AccesedHost> = this.logAnalyzer.getTopHosts(parsedLog, 5);
