@@ -1,6 +1,6 @@
 import {VarnishLog} from './VarnishLog';
 
-export class LogFileParser {
+export class VarnishLogParser {
 
   private ipMatch:RegExp = /(\d+(?:\.\d+){3})/;
   private dateTime:RegExp = /\[(.*)\]/;
