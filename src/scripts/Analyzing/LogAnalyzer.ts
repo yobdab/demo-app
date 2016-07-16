@@ -1,12 +1,12 @@
 import {VarnishLog} from '../Parsing/VarnishLog';
-import {TopHosts} from '../Parsing/TopHosts';
-import {TopFiles} from '../Parsing/TopFiles';
+import {AccesedHost} from './AccesedHost';
+import {AccessedFile} from './AccessedFile';
 
 export class LogAnalyzer {
-  public getTopHosts(log:Array<VarnishLog>, hostsNumber:number):Array<TopHosts> {
-    let hostsCount:Array<TopHosts> = [];
+  public getTopHosts(log:Array<VarnishLog>, hostsNumber:number):Array<AccesedHost> {
+    let hostsCount:Array<AccesedHost> = [];
     for (let line of log) {
-      let found = hostsCount.some((el:TopHosts) => {
+      let found = hostsCount.some((el:AccesedHost) => {
         return el.host === line.host;
       });
       if (!found) {
@@ -19,10 +19,10 @@ export class LogAnalyzer {
     return hostsCount.sort(this.sortComparator).reverse().slice(0, hostsNumber);
   }
 
-  public getTopFiles(log:Array<VarnishLog>, filesNumber:number):Array<TopFiles> {
-    let filesCount:Array<TopFiles> = [];
+  public getTopFiles(log:Array<VarnishLog>, filesNumber:number):Array<AccessedFile> {
+    let filesCount:Array<AccessedFile> = [];
     for (let line of log) {
-      let found = filesCount.some((el:TopFiles) => {
+      let found = filesCount.some((el:AccessedFile) => {
         return el.file === line.file;
       });
       if (!found) {
@@ -35,7 +35,7 @@ export class LogAnalyzer {
     return filesCount.sort(this.sortComparator).reverse().slice(0, filesNumber);
   }
 
-  private sortComparator(el1:any, el2:any):number {
+  private sortComparator(el1:AccesedHost|AccessedFile, el2:AccesedHost|AccessedFile):number {
     return el1.count - el2.count;
   }
 }
