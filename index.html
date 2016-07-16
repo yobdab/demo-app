@@ -1,12 +1,30 @@
 <!doctype html>
 <html class="no-js">
 <head>
-  <title>Demo App</title>
+  <title>Simple Demo Application</title>
   <meta charset="utf-8">
+  <link type="text/css" rel="stylesheet" href="/src/styles/reset.css">
+  <link type="text/css" rel="stylesheet" href="/src/styles/fonts.css">
+  <link type="text/css" rel="stylesheet" href="/src/styles/tabs.css">
+  <link type="text/css" rel="stylesheet" href="/src/styles/main.css">
 </head>
 <body>
+<h1>Simple Demo Application</h1>
+<div id="demo-app-container" class="card shadow">
 
-<div id="demo-app-container"></div>
+  <div class="tabs-header">
+    <div class="tab-label">Tab 1</div>
+    <div class="tab-label">Tab 2</div>
+    <div class="tab-label">Tab 3</div>
+    <div class="tab-label-slide"></div>
+  </div>
+
+  <div class="tabs-content">
+    <div class="tab-content"></div>
+    <div class="tab-content"></div>
+    <div class="tab-content"></div>
+  </div>
+</div>
 
 <script src="vendor/jspm_packages/system.js"></script>
 <script src="jspm.conf.js"></script>
