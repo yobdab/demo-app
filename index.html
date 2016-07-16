@@ -10,7 +10,21 @@
 
 <script src="vendor/jspm_packages/system.js"></script>
 <script src="jspm.conf.js"></script>
-
+<script language="JavaScript">
+  System.import('./src/scripts/DemoApp').then(function (pkg) {
+    window.demoApp = new pkg.DemoApp();
+    demoApp.initialize(
+      document.getElementById('demo-app-container'),
+      {
+        logFileUrl: 'http://www.vg.no/rss/feed/forsiden/?frontId=1',
+        rssUrl: 'http://www.vg.no/rss/feed/forsiden/?frontId=1',
+        feedUrl: ''
+      }
+    ).catch(function (message) {
+      console.error(message);
+    });
+  });
+</script>
 
 </body>
 </html>
