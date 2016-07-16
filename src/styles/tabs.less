@@ -1,0 +1,80 @@
+@import 'variables';
+
+.generate-tabs(@tabs-number);
+
+.generate-tabs(@n, @i: 1) when (@i =< @tabs-number) {
+  .tab-label.active:nth-of-type(@{i}) {
+
+    ~ .tab-label-slide {
+      left: calc((100% / @tabs-number) * (@i - 1));
+    }
+
+  }
+  .generate-tabs(@n, (@i + 1));
+}
+
+.clearfix() {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+.tabs-header {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  position: relative;
+
+  .clearfix
+}
+
+.tab-label {
+  width: calc(100% / @tabs-number);
+  float: left;
+  height: 48px;
+  text-align: center;
+  line-height: 48px;
+  color: @tabs-text-color;
+  position: relative;
+  z-index: 2;
+  transition: color 0.1s ease;
+  cursor: pointer;
+
+  &.active {
+    color: @primary-color;
+  }
+}
+
+.tab-label-slide {
+  width: calc(100% / @tabs-number);
+  height: 2px;
+  background: @accent-color;
+  position: absolute;
+  z-index: 3;
+  top: 46px;
+  left: 0;
+  transition: left 0.1s ease;
+}
+
+.tabs-content {
+  width: 100%;
+  overflow: hidden;
+
+  .clearfix;
+
+  .tab-content {
+    position: relative;
+    width: 100%;
+    padding: 16px;
+    background: @background-color;
+    font-size: 1em;
+    color: rgba(0, 0, 0, 0.87);
+    display: none;
+    height:100%;
+    transition: height 0.2s ease;
+    &.active {
+      display: block;
+    }
+  }
+}
+

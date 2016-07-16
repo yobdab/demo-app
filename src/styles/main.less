@@ -1,3 +1,31 @@
-body{
-  background:red;
+@import 'variables';
+@import 'fonts';
+
+body {
+  font-family: Roboto, sans-serif;
+  background-color: @background-color;
+}
+
+h1 {
+  font-size: 2em;
+  text-align: center;
+  font-weight: 600;
+  margin: 30px 0;
+  color: @primary-color;
+}
+
+#demo-app-container {
+  width: auto;
+  max-width: 50%;
+  margin: auto;
+  transition: height 0.2s ease;
+}
+
+.card {
+  background: #fff;
+  border-radius: 2px;
+}
+
+.shadow {
+  box-shadow: 0 2px 4px -1px rgba(0,0,0,.2),0 4px 5px 0 rgba(0,0,0,.14),0 1px 10px 0 rgba(0,0,0,.12);
 }
