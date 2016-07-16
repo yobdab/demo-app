@@ -13,3 +13,4 @@
 /test/**/*.js
 /test/**/*.js.map
 !/test/karma.conf.js
+/src/styles/*.css
