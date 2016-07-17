@@ -22,7 +22,6 @@ export class VarnishLogProvider {
 
   public initialize(logFileUrl:string):void {
     this.remoteFileRequest.getFileContent(logFileUrl, 'responseText').then((fileContent) => {
-      console.log(fileContent);
       const parsedLog:Array<VarnishLog> = this.logFileParser.parseLog(fileContent);
       const topHosts:Array<AccesedHost> = this.logAnalyzer.getTopHosts(parsedLog, 5);
       const topFiles:Array<AccessedFile> = this.logAnalyzer.getTopFiles(parsedLog, 5);
