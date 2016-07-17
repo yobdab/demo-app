@@ -1,4 +1,5 @@
 import {DomElementAdapter} from '../common/DomElementAdapter';
+
 export class Tabs {
   private tabsLabels:Array<HTMLElement> = [];
   private tabsContent:Array<HTMLElement> = [];
@@ -9,6 +10,7 @@ export class Tabs {
   };
 
   public initialize(daAnchor:HTMLElement):void {
+    console.log('>>', daAnchor);
     const tabsElements:NodeListOf<Element> = daAnchor.getElementsByClassName('tab-label');
     const contentElements:NodeListOf<Element> = daAnchor.getElementsByClassName(this.CONTENT_TAB_CSS_CLASS);
 
@@ -30,8 +32,22 @@ export class Tabs {
     return el;
   }
 
-  public setTabContent(tabNumber:number, content:string):void {
-    this.tabsContent[tabNumber - 1].innerText = content;
+  public setTabContent(tabNumber:number, content:any):void {
+    if (this.tabsContent[tabNumber].getElementsByClassName('loader')[0]) {
+      this.tabsContent[tabNumber].getElementsByClassName('loader')[0].remove();
+    }
+    this.tabsContent[tabNumber].appendChild(content);
+  }
+
+  public setTabContentWithError(tabNumber:number, error:string):void {
+    this.tabsContent[tabNumber].appendChild(this.createErrorElement(error));
+  }
+
+  private createErrorElement(error:string):HTMLElement {
+    let content:HTMLElement = document.createElement('div');
+    content.classList.add('error');
+    content.innerText = error;
+    return content;
   }
 
   private activateTab(tab:HTMLElement):void {
