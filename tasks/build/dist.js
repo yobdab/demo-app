@@ -1,7 +1,6 @@
 module.exports = (gulp, plugins, config) => {
   const distFileName = 'index.js';
   const outFile = plugins.joinPath(config.distDir, distFileName);
-  const jspmUtil = require('../utils/jspm')();
   const Builder = require('jspm').Builder;
   const builder = new Builder();
 
@@ -9,7 +8,6 @@ module.exports = (gulp, plugins, config) => {
     return beginBuild()
       .then(buildSFX)
       .then(cssPathFix)
-      .then(copyDemoApp)
       .then(copyIndex)
       .then(() => console.log('Build complete'))
       .catch((err) => console.log('Build Failed', err));
@@ -33,11 +31,6 @@ module.exports = (gulp, plugins, config) => {
   function cssPathFix() {
     return gulp.src(outFile)
       .pipe(plugins.replace('(src/', '(')) // ... ;(
-      .pipe(gulp.dest(config.distDir));
-  }
-
-  function copyDemoApp() {
-    return gulp.src(jspmUtil.resolve('demo-app'))
       .pipe(gulp.dest(config.distDir));
   }
 
