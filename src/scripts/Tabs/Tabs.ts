@@ -20,8 +20,9 @@ export class Tabs {
   }
 
   public setTabContent(tabNumber:number, content:any):void {
-    if (this.tabsContent[tabNumber].getElementsByClassName('loader')[0]) {
-      this.tabsContent[tabNumber].getElementsByClassName('loader')[0].remove();
+    const loader:Element = this.tabsContent[tabNumber].getElementsByClassName('loader')[0];
+    if (loader) {
+      loader.parentNode.removeChild(loader);
     }
     this.tabsContent[tabNumber].appendChild(content);
   }
