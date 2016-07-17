@@ -1,6 +1,6 @@
 const gulp = require('gulp');
 const plugins = require('gulp-load-plugins')({
-  pattern: ['gulp-*', 'yargs', 'util', 'minimist', 'username', 'del', 'eslint']
+  pattern: ['gulp-*', 'yargs', 'util', 'minimist', 'username', 'del', 'eslint' , 'gulp-strip-code', 'gulp-inject']
 });
 plugins.joinPath = require('path').join;
 
@@ -14,6 +14,7 @@ const config = {
   taskDir: plugins.joinPath(__dirname, 'tasks'),
   scriptsDir: plugins.joinPath(__dirname, 'src', 'scripts'),
   stylesDir: plugins.joinPath(__dirname, 'src', 'styles'),
+  publicDir: plugins.joinPath(__dirname, 'public'),
   viewsDir: plugins.joinPath(__dirname, 'src', 'views'),
   publicationsDir: plugins.joinPath(__dirname, 'src', 'publications'),
   publicationsDistDir: plugins.joinPath(__dirname, 'dist', 'publications'),
@@ -22,9 +23,11 @@ const config = {
   tslintTestConf: plugins.joinPath(__dirname, 'test', 'tslint.json')
 };
 
+gulp.task('dist:public', require('./tasks/build/public')(gulp, plugins, config));
+gulp.task('dist:styles', require('./tasks/build/styles')(gulp, plugins, config));
 gulp.task('dist:fonts', require('./tasks/build/fonts')(gulp, plugins, config));
-gulp.task('dist:build', ['compile'], require('./tasks/build/dist')(gulp, plugins, config));
-gulp.task('dist', ['dist:fonts', 'dist:build']);
+gulp.task('dist:build', require('./tasks/build/dist')(gulp, plugins, config));
+gulp.task('dist', ['compile','dist:public',  'dist:styles', 'dist:fonts', 'dist:build']);
 
 gulp.task('clean', require('./tasks/clean')(plugins, config));
 gulp.task('build', ['check', 'test', 'dist']);
