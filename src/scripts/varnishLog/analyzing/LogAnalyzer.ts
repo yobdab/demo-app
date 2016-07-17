@@ -22,7 +22,7 @@ export class LogAnalyzer {
         });
       }
     }
-    return hostsCount.sort(this.trafficComparator).reverse().slice(0, hostsNumber);
+    return hostsCount.sort(this.trafficComparator).slice(0, hostsNumber);
   }
 
   public getTopFiles(log:Array<VarnishLog>, filesNumber:number):Array<AccessedFile> {
@@ -38,15 +38,15 @@ export class LogAnalyzer {
         });
       }
     }
-    return filesCount.sort(this.sortComparator).reverse().slice(0, filesNumber);
+    return filesCount.sort(this.sortComparator).slice(0, filesNumber);
   }
 
   private trafficComparator(el1:AccesedHost, el2:AccesedHost):number {
-    return el1.traffic - el2.traffic;
+    return  el2.traffic - el1.traffic;
   }
 
   private sortComparator(el1:AccessedFile, el2:AccessedFile):number {
-    return el1.requests - el2.requests;
+    return el2.requests - el1.requests;
   }
 
 }
