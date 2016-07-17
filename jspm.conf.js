@@ -13,8 +13,8 @@ System.config({
 
   packages: {
     "app": {
-      "main": "DemoApp",
-      "format": "amd",
+      "main": "index",
+      "format": "global",
       "defaultExtension": "js"
     }
   },
