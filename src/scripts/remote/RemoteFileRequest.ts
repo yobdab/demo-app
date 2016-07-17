@@ -1,28 +1,37 @@
 import {Promise, Deferred, defer} from '../imports/Promises';
+import {ResponseType} from './ResponseType';
 
 export class RemoteFileRequest {
 
-  private request:XMLHttpRequest;
   private READY_STATUS_CODE:number = 200;
   private FINISHED_STATE_CODE:number = 4;
 
-  public getFileContent(path:string):Promise<any> {
+  public getFileContent(path:string, type:ResponseType):Promise<any> {
+    let request:XMLHttpRequest = new XMLHttpRequest();
     let defferedRequest:Deferred<any> = defer();
-    this.request = new XMLHttpRequest();
 
-    this.request.onreadystatechange = () => {
-      if (this.isRequestReady()) {
-        defferedRequest.resolve(this.request.responseText);
+    request.onreadystatechange = () => {
+      if (this.isRequestReady(request)) {
+        defferedRequest.resolve(request[type]);
       }
+      if (this.isFailedRequest(request)) {
+        let response:string = request.response || 'empty response, possible network error';
+        defferedRequest.reject(response);
+      }
+
     };
 
-    this.request.open('GET', path, true);
-    this.request.send();
+    request.open('GET', path, true);
+    request.send();
 
     return defferedRequest.promise;
   }
 
-  private isRequestReady():boolean {
-    return this.request.readyState === this.FINISHED_STATE_CODE && this.request.status === this.READY_STATUS_CODE;
+  private isRequestReady(request:XMLHttpRequest):boolean {
+    return request.readyState === this.FINISHED_STATE_CODE && request.status === this.READY_STATUS_CODE;
+  }
+
+  private isFailedRequest(request:XMLHttpRequest):boolean {
+    return request.readyState === this.FINISHED_STATE_CODE && request.status !== this.READY_STATUS_CODE;
   }
 }
