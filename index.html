@@ -1,28 +1,54 @@
 <!doctype html>
 <html class="no-js">
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Simple Demo Application</title>
   <meta charset="utf-8">
   <link type="text/css" rel="stylesheet" href="/src/styles/reset.css">
   <link type="text/css" rel="stylesheet" href="/src/styles/fonts.css">
-  <link type="text/css" rel="stylesheet" href="/src/styles/tabs.css">
   <link type="text/css" rel="stylesheet" href="/src/styles/main.css">
+  <link type="text/css" rel="stylesheet" href="/src/styles/tabs.css">
+  <link type="text/css" rel="stylesheet" href="/src/styles/loader.css">
 </head>
 <body>
 <h1>Simple Demo Application</h1>
 <div id="demo-app-container" class="card shadow">
 
   <div class="tabs-header">
-    <div class="tab-label">Tab 1</div>
-    <div class="tab-label">Tab 2</div>
-    <div class="tab-label">Tab 3</div>
+    <div class="tab-label">Varnish log</div>
+    <div class="tab-label">Rss feed</div>
+    <div class="tab-label">JSON feed</div>
     <div class="tab-label-slide"></div>
   </div>
 
   <div class="tabs-content">
-    <div class="tab-content"></div>
-    <div class="tab-content"></div>
-    <div class="tab-content"></div>
+    <div class="tab-content active">
+      <div class="loader">
+        <div class="path-wrap">
+          <svg class="circular">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class="tab-content">
+      <div class="loader">
+        <div class="path-wrap">
+          <svg class="circular">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class="tab-content">
+      <div class="loader">
+        <div class="path-wrap">
+          <svg class="circular">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+          </svg>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -34,9 +60,9 @@
     demoApp.initialize(
       document.getElementById('demo-app-container'),
       {
-        logFileUrl: '/src/logs/varnish.log',
-        rssUrl: 'http://www.vg.no/rss/feed/forsiden/?frontId=1',
-        feedUrl: ''
+        logFileUrl: '//varnish.log',
+        rssFeedUrl: 'http://www.vg.no/rss/feed/forsiden/?frontId=1',
+        jsonFeedUrl: 'http://rexxars.com/playground/testfeed/'
       }
     );
   });
