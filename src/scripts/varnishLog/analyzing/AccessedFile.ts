@@ -1,4 +1,4 @@
 export interface AccessedFile {
   file:string;
-  count:number;
+  requests:number;
 }
