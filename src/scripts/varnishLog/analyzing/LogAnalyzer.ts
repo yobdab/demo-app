@@ -1,4 +1,4 @@
-import {VarnishLog} from '../varnishLog/VarnishLog';
+import {VarnishLog} from '../VarnishLog';
 import {AccesedHost} from './AccesedHost';
 import {AccessedFile} from './AccessedFile';
 
