@@ -1,13 +1,7 @@
-import {DomElementAdapter} from '../common/DomElementAdapter';
-
 export class Tabs {
   private tabsLabels:Array<HTMLElement> = [];
   private tabsContent:Array<HTMLElement> = [];
   private CONTENT_TAB_CSS_CLASS:string = 'tab-content';
-
-  constructor(private domElementAdapter:DomElementAdapter) {
-
-  };
 
   public initialize(daAnchor:HTMLElement):void {
     const tabsElements:NodeListOf<Element> = daAnchor.getElementsByClassName('tab-label');
