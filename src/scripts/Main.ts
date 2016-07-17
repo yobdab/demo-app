@@ -14,6 +14,7 @@ export class Main {
               private varnishLogProvider:VarnishLogProvider,
               private rssFeedProvider:RssFeedProvider,
               private jsonFeedProvider:JsonFeedProvider) {
+
   }
 
   public initialize(daAnchor:HTMLElement, config:InitConfig):void {
