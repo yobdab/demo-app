@@ -1,6 +1,12 @@
 @import 'variables';
 @import 'fonts';
+@import 'tabs';
+@import 'table';
+@import 'loader';
+* {
 
+  box-sizing: border-box;
+}
 body {
   font-family: Roboto, sans-serif;
   background-color: @background-color;
@@ -15,10 +21,12 @@ h1 {
 }
 
 #demo-app-container {
-  width: auto;
-  max-width: 50%;
+  width: 100%;
+  max-width: 70%;
   margin: auto;
+  margin-bottom:20px;
   transition: height 0.2s ease;
+
 }
 
 .card {
@@ -27,5 +35,25 @@ h1 {
 }
 
 .shadow {
-  box-shadow: 0 2px 4px -1px rgba(0,0,0,.2),0 4px 5px 0 rgba(0,0,0,.14),0 1px 10px 0 rgba(0,0,0,.12);
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, .2), 0 4px 5px 0 rgba(0, 0, 0, .14), 0 1px 10px 0 rgba(0, 0, 0, .12);
+}
+
+.error{
+  padding:10px;
+  font-size:13px;
+  color:#fff;
+  background-color: @accent-color;
+  display:inline-block;
+}
+
+@media (max-width: 640px) {
+  #demo-app-container {
+    max-width: 85%;
+  }
+}
+
+@media (max-width: 480px) {
+  #demo-app-container {
+    max-width: 90%;
+  }
 }
