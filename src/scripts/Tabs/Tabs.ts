@@ -10,7 +10,6 @@ export class Tabs {
   };
 
   public initialize(daAnchor:HTMLElement):void {
-    console.log('>>', daAnchor);
     const tabsElements:NodeListOf<Element> = daAnchor.getElementsByClassName('tab-label');
     const contentElements:NodeListOf<Element> = daAnchor.getElementsByClassName(this.CONTENT_TAB_CSS_CLASS);
 
@@ -24,12 +23,6 @@ export class Tabs {
         this.activateTab(tab);
       };
     });
-  }
-
-  public createTab():HTMLDivElement {
-    let el:HTMLDivElement = this.domElementAdapter.createDiv();
-    el.classList.add(this.CONTENT_TAB_CSS_CLASS);
-    return el;
   }
 
   public setTabContent(tabNumber:number, content:any):void {
