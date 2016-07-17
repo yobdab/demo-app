@@ -4,7 +4,8 @@ module.exports = (gulp, plugins, config) => {
         plugins.joinPath(config.stylesDir, 'reset.less'),
         plugins.joinPath(config.stylesDir, 'main.less'),
         plugins.joinPath(config.stylesDir, 'fonts.less'),
-        plugins.joinPath(config.stylesDir, 'tabs.less')
+        plugins.joinPath(config.stylesDir, 'tabs.less'),
+        plugins.joinPath(config.stylesDir, 'loader.less')
 
       ])
       .pipe(plugins.less())
