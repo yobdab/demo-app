@@ -9,7 +9,7 @@ module.exports = (gulp, plugins, config) => {
 
       ])
       .pipe(plugins.less())
-      .pipe(plugins.autoprefixer('last 1 version'))
+      .pipe(plugins.autoprefixer({browsers: ['last 2 version']}))
       .pipe(gulp.dest(config.stylesDir))
       .pipe(plugins.size());
   };
