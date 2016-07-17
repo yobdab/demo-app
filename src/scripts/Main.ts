@@ -1,4 +1,3 @@
-/// <reference path="./../../vendor/typings/globals/node/index.d.ts" />
 import './../styles/reset.css!';
 import './../styles/main.css!';
 import {inject} from './imports/DependencyInjection';
