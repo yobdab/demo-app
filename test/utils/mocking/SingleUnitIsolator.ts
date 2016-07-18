@@ -5,14 +5,14 @@ export class SingleUnitIsolator {
 
   private container:RestrictedContainer;
 
-  constructor() {
-    this.container = new RestrictedContainer();
-  }
-
   public static around(fn:any):SingleUnitIsolator {
     const isolator:SingleUnitIsolator = new SingleUnitIsolator();
     isolator.allowReal(fn);
     return isolator;
+  }
+
+  constructor() {
+    this.container = new RestrictedContainer();
   }
 
   public allowReal(fn:any):void {

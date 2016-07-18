@@ -12,7 +12,7 @@ import {Promise} from '../imports/Promises';
 
 @inject(RemoteFileRequest, VarnishLogParser, LogAnalyzer, Tabs, DomElementAdapter)
 export class VarnishLogProvider {
-  static DEFAULT_TABLE_LIMIT:number = 5;
+  public static DEFAULT_TABLE_LIMIT:number = 5;
 
   constructor(private remoteFileRequest:RemoteFileRequest,
               private varnishLogParser:VarnishLogParser,

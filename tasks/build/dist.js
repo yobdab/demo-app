@@ -45,8 +45,8 @@ module.exports = (gulp, plugins, config) => {
       .pipe(plugins.replace('/index.js', 'index.js'))
       .pipe(plugins.replace('vendor/jspm_packages/', ''))
       .pipe(plugins.stripCode({
-        start_comment: 'start-dev-block',
-        end_comment: 'end-dev-block'
+        'start_comment': 'start-dev-block',
+        'end_comment': 'end-dev-block'
       }))
       .pipe(gulp.dest(config.distDir));
 
