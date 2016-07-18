@@ -24,7 +24,7 @@ module.exports = (gulp, plugins, config) => {
     const buildConfig = {
       format: 'global',
       sourceMaps: false,
-      minify: false
+      minify: true
     };
     return builder.buildStatic(moduleName, outFile, buildConfig);
   }
