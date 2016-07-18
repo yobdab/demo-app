@@ -5,6 +5,7 @@ import {DomElementAdapter} from '../common/DomElementAdapter';
 import {RssFeedParser} from './parsing/rssFeedParser';
 import {ArticlesList} from './ArticlesList';
 import {TabsList} from '../tabs/TabsList';
+import {Promise} from '../imports/Promises';
 
 @inject(RemoteFileRequest, Tabs, DomElementAdapter, RssFeedParser)
 export class RssFeedProvider {
@@ -16,8 +17,8 @@ export class RssFeedProvider {
 
   }
 
-  public initialize(rssFeedUrl:string):void {
-    this.remoteFileRequest.getFileContent(rssFeedUrl, 'responseXML').then((fileContent) => {
+  public initialize(rssFeedUrl:string):Promise<any> {
+    return this.remoteFileRequest.getFileContent(rssFeedUrl, 'responseXML').then((fileContent) => {
       let parsedRssFeed:ArticlesList = this.rssFeedParser.getArticles(fileContent);
       const articlesTable:HTMLTableElement = this.domElementAdapter.createTableFromData(parsedRssFeed);
       this.tabs.setTabContent(TabsList.RSS_FEED, articlesTable);
