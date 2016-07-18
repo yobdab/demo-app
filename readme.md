@@ -1,4 +1,5 @@
 ## Demo application
+Working dist version: http://ppstudio.pl/demo/
 
 # Installation
 First, install Node from here: http://nodejs.org/download/
@@ -31,9 +32,6 @@ Built of DemoApp is located in `dist/` directory and after uploading to any host
 # Tests
 You can ensure the tests are passing running `gulp test`
  
-# Configuration
-...
-
 # Other
 Also very important is clean code, so don't forget to check if TSLint, ESLint aren't complaining (you can run TSLint, ESLint by typing `gulp check`).
 
