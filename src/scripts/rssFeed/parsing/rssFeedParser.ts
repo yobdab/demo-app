@@ -1,5 +1,7 @@
 import {ArticlesList} from '../ArticlesList';
 import {FeedItem} from '../FeedItem';
+import {moment} from '../../imports/Moment';
+
 export class RssFeedParser {
   private xmlSerializer:XMLSerializer = new XMLSerializer();
 
@@ -9,9 +11,8 @@ export class RssFeedParser {
     let items:NodeListOf<Element> = data.getElementsByTagName('item');
     for (let i:number = 0; i < items.length; i++) {
       let title:string = this.getTagInnerText(items[i], 'title');
-
       let date:string = this.getTagInnerText(items[i], 'pubDate');
-      articlesList.push({title: title, date: date});
+            articlesList.push({title: title, date: moment(date).format('LLL')});
 
     }
     return articlesList.sort(this.compareDates);

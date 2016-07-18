@@ -25,6 +25,7 @@ System.config({
     "clean-css": "npm:clean-css@3.4.18",
     "css": "github:systemjs/plugin-css@0.1.23",
     "es5-shim": "github:es-shims/es5-shim@4.5.9",
+    "moment": "npm:moment@2.14.1",
     "q": "github:kriskowal/q@1.4.1",
     "ts": "github:frankwallis/plugin-typescript@4.0.16",
     "typescript": "npm:typescript@1.8.10",
