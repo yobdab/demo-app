@@ -22,6 +22,10 @@
 }
 
 .tabs-header {
+  * {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+  }
+
   border-bottom: 1px solid rgba(0, 0, 0, 0.12);
   position: relative;
 
@@ -40,7 +44,7 @@
   transition: color 0.1s ease;
   cursor: pointer;
 
-  &.active {
+  &.active, &:hover {
     color: @primary-color;
   }
 }
